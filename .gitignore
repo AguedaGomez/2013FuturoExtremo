@@ -1,0 +1,5 @@
+cocos2d/
+*.tlog
+proj.win32/
+CMakeLists.txt
+.cocos-project.json
