@@ -31,10 +31,12 @@ bool PauseScene::init()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto background = Sprite::create("HelloWorld.png");
-	background->setPosition(Point((visibleSize.width / 2), (visibleSize.height / 2)));
-	addChild(background, 0);
-
+	auto menuBotton = MenuItemImage::create("volvermenu.png", "volvermenu.png", CC_CALLBACK_1(PauseScene::goToMainMenu, this));
+	auto playBotton = MenuItemImage::create("jugar.png", "jugar.png", CC_CALLBACK_1(PauseScene::retryGameScene, this));
+	auto menu = Menu::create(menuBotton, playBotton, NULL);
+	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
+	addChild(menu, 1);
+	
 	return true;
 }
 
