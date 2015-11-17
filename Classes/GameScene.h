@@ -11,6 +11,7 @@ private:
 	EventKeyboard::KeyCode _pressedKey;
 public:
 	static cocos2d::Scene* createScene();
+	Sprite *_playerSprite;
 
 	virtual bool init();
 

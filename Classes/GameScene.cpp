@@ -2,6 +2,7 @@
 #include "PauseScene.h"
 #include "GameOverScene.h"
 
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -30,6 +31,17 @@ bool GameScene::init()
 	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	//Carga el fondo
+	auto background = Sprite::create("fondo.png");
+	background->setPosition(Point((visibleSize.width - 1871), (visibleSize.height / 2)));
+	addChild(background, 0);
+
+	//Carga el personaje
+	_playerSprite = Sprite::create("pj.png");
+	_playerSprite->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 2) - 90));
+	addChild(_playerSprite, 1);
+
 
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
