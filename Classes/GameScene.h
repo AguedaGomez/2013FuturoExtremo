@@ -18,6 +18,9 @@ public:
 	void goToPauseScene(Ref *pSender);
 	void goToGameOverScene(Ref *pSender);
 
+	void setBackground();
+	void placeHeroPROVISIONAL();
+
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event);
 

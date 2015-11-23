@@ -30,17 +30,11 @@ bool GameScene::init()
 		return false;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	
 
-	//Carga el fondo
-	auto background = Sprite::create("fondo.png");
-	background->setPosition(Point((visibleSize.width-background->getContentSize().width / 2/*1871*/), (visibleSize.height / 2)));
-	addChild(background, 0);
-
-	//Carga el personaje
-	_playerSprite = Sprite::create("pj.png");
-	_playerSprite->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 2) - 90));
-	addChild(_playerSprite, 1);
+	
+	setBackground();
+	placeHeroPROVISIONAL();
 
 
 	//inciar la variable de de las teclas
@@ -53,6 +47,22 @@ bool GameScene::init()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	
 	return true;
+}
+
+void GameScene::setBackground() {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	//Carga el fondo
+	auto background = Sprite::create("fondo.png");
+	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2/*1871*/), (visibleSize.height / 2)));
+	addChild(background, 0);
+}
+
+void GameScene::placeHeroPROVISIONAL() {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	//Carga el personaje
+	_playerSprite = Sprite::create("pj.png");
+	_playerSprite->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 2) - 90));
+	addChild(_playerSprite, 1);
 }
 
 void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
