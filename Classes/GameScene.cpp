@@ -34,7 +34,7 @@ bool GameScene::init()
 
 	//Carga el fondo
 	auto background = Sprite::create("fondo.png");
-	background->setPosition(Point((visibleSize.width - 1871), (visibleSize.height / 2)));
+	background->setPosition(Point((visibleSize.width-background->getContentSize().width / 2/*1871*/), (visibleSize.height / 2)));
 	addChild(background, 0);
 
 	//Carga el personaje
