@@ -53,7 +53,7 @@ void GameScene::setBackground() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el fondo
 	auto background = Sprite::create("fondo.png");
-	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2/*1871*/), (visibleSize.height / 2)));
+	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)));
 	addChild(background, 0);
 }
 
@@ -61,7 +61,7 @@ void GameScene::placeHeroPROVISIONAL() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el personaje
 	_playerSprite = Sprite::create("pj.png");
-	_playerSprite->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 2) - 90));
+	_playerSprite->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2 + 5))); //El +5 es para cuadrarlo justo sobre el suelo
 	addChild(_playerSprite, 1);
 }
 

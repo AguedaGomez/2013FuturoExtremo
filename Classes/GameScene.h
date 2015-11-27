@@ -26,6 +26,8 @@ public:
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(GameScene);
+
+
 };
 
 #endif 
