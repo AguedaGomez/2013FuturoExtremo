@@ -5,10 +5,20 @@
 
 USING_NS_CC;
 
+//const int POD_STEP_MOVE = 3;
+
 class GameScene: public cocos2d::Layer
 {
 private:
 	EventKeyboard::KeyCode _pressedKey;
+	Vec2 _podVector;
+	bool _isMoving;
+	bool _combatMode;
+	Sprite *characterSprite;
+	MoveBy *moveby;
+
+	void update(float dt);
+
 public:
 	static cocos2d::Scene* createScene();
 
@@ -20,8 +30,12 @@ public:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event);
 
+
+
 	// implement the "static create()" method manually
 	CREATE_FUNC(GameScene);
+
+	
 };
 
 #endif 

@@ -15,6 +15,7 @@ Scene* GameScene::createScene()
 	// add layer as a child to scene
 	scene->addChild(layer);
 
+
 	// return the scene
 	return scene;
 }
@@ -33,6 +34,18 @@ bool GameScene::init()
 
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
+	_podVector = Vec2::ZERO; 
+	_isMoving = false;
+	_combatMode = false;
+
+	//imagen personaje 
+	//auto polygonInfo = AutoPolygon::generatePolygon("pers.png");
+	characterSprite = Sprite::create("pers.png");
+	characterSprite->setPosition(Point((visibleSize.width/2),(visibleSize.height/2)));
+	addChild(characterSprite,0);
+
+	moveby = MoveBy::create(1, Vec2(10,0));
+	characterSprite->runAction(RepeatForever::create(moveby));
 
 	//Eventos/Callbacks de teclado
 	auto keyboardListener = EventListenerKeyboard::create();
@@ -40,15 +53,43 @@ bool GameScene::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	
+	//Lamada a update en intervalos de tiempo
+	this->schedule(schedule_selector(GameScene::update),1.0); 
 	return true;
 }
 
 void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
-	goToPauseScene(this);
+	auto _pressedKey = keyCode;
+
+	switch (_pressedKey){
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			goToPauseScene(this);
+			break;
+		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+			_isMoving = true;
+			
+			//_podVector = Vec2(-POD_STEP_MOVE, 0);
+			break;
+		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+			_isMoving = true;
+			//_podVector = Vec2(POD_STEP_MOVE, 0);
+			break;
+		case EventKeyboard::KeyCode::KEY_UP_ARROW:
+			_combatMode = true;
+			log("Coltrain esta en modo combate");
+			break;
+		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+			_combatMode = false;
+			log("Coltrain esta en modo normal");
+			break;
+	}
+	
 }
 
 void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
-	log("tecla %d liberada", keyCode);
+		_isMoving = false;
+		//_podVector = Vec2::ZERO;
+	
 }
 void GameScene::goToPauseScene(Ref *pSender)
 {
@@ -60,4 +101,13 @@ void GameScene::goToGameOverScene(Ref *pSebder)
 {
 	auto scene = GameOverScene::createScene();
 	Director::getInstance()->replaceScene(scene);
+}
+
+void GameScene::update(float dt) {
+	if (_isMoving) {
+		characterSprite->runAction(moveby);
+		
+	}
+
+	
 }
