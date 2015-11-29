@@ -39,6 +39,7 @@ bool GameScene::init()
 	
 	setBackground();
 	placeHeroPROVISIONAL();
+	futureBuilding();
 
 
 	//inciar la variable de de las teclas
@@ -82,6 +83,22 @@ void GameScene::placeHeroPROVISIONAL() {
 	_playerSprite = Sprite::create("pj.png");
 	_playerSprite->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2 + 5))); //El +5 es para cuadrarlo justo sobre el suelo
 	addChild(_playerSprite, 1);
+}
+
+/* Carga y reproduce animacion cartel*/
+void GameScene::futureBuilding() {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	futureBAnimation = Sprite::createWithSpriteFrameName("cartel_1.png");
+	futureBAnimation->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2)));
+	//futureBAnimation->init();
+	addChild(futureBAnimation, 1);
+
+	// create the animation out of the frames
+	//Animation* animation = Animation::createWithSpriteFrames(futureBAnimation);
+	//Animate* animate = Animate::create(animation);
+
+	// run it and repeat it forever
+	
 }
 
 /*

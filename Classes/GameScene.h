@@ -15,6 +15,8 @@ private:
 	bool _isMoving;
 	bool _combatMode;
 	Sprite *characterSprite;
+	Sprite *futureBAnimation;
+	
 
 	void update(float dt);
 
@@ -29,6 +31,7 @@ public:
 
 	void setBackground();
 	void placeHeroPROVISIONAL();
+	void futureBuilding();
 
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event);
