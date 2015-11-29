@@ -34,7 +34,7 @@ bool GameScene::init()
 
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
-	_podVector = Vec2::ZERO; 
+	_heroVector = Vec2::ZERO; 
 	_isMoving = false;
 	_combatMode = false;
 
@@ -42,10 +42,7 @@ bool GameScene::init()
 	//auto polygonInfo = AutoPolygon::generatePolygon("pers.png");
 	characterSprite = Sprite::create("pers.png");
 	characterSprite->setPosition(Point((visibleSize.width/2),(visibleSize.height/2)));
-	addChild(characterSprite,0);
-
-	moveby = MoveBy::create(1, Vec2(10,0));
-	characterSprite->runAction(RepeatForever::create(moveby));
+	addChild(characterSprite,1);
 
 	//Eventos/Callbacks de teclado
 	auto keyboardListener = EventListenerKeyboard::create();
@@ -53,8 +50,10 @@ bool GameScene::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	
+
+
 	//Lamada a update en intervalos de tiempo
-	this->schedule(schedule_selector(GameScene::update),1.0); 
+	this->schedule(schedule_selector(GameScene::update),0); 
 	return true;
 }
 
@@ -67,29 +66,33 @@ void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 			break;
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 			_isMoving = true;
-			
-			//_podVector = Vec2(-POD_STEP_MOVE, 0);
+			_heroVector = Vec2(-HERO_STEP_MOVE, 0);
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 			_isMoving = true;
-			//_podVector = Vec2(POD_STEP_MOVE, 0);
+			_heroVector = Vec2(HERO_STEP_MOVE, 0);
 			break;
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
 			_combatMode = true;
-			log("Coltrain esta en modo combate");
+			log("Coltrane esta en modo combate");
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 			_combatMode = false;
-			log("Coltrain esta en modo normal");
+			log("Coltrane esta en modo normal");
 			break;
 	}
 	
 }
 
 void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
+
+	auto _pressedKey = keyCode;
+
+	if (_pressedKey == keyCode) {
+		_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
 		_isMoving = false;
-		//_podVector = Vec2::ZERO;
-	
+		_heroVector = Vec2::ZERO;
+	}
 }
 void GameScene::goToPauseScene(Ref *pSender)
 {
@@ -104,9 +107,14 @@ void GameScene::goToGameOverScene(Ref *pSebder)
 }
 
 void GameScene::update(float dt) {
+
+	//Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	if (_isMoving) {
-		characterSprite->runAction(moveby);
-		
+		//characterSprite->runAction(moveby);
+		Vec2 newPos = Vec2(characterSprite->getPosition().x + _heroVector.x, characterSprite->getPosition().y + _heroVector.y);
+
+		characterSprite->setPosition(newPos);
 	}
 
 	

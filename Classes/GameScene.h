@@ -5,17 +5,16 @@
 
 USING_NS_CC;
 
-//const int POD_STEP_MOVE = 3;
+const int HERO_STEP_MOVE = 1;
 
 class GameScene: public cocos2d::Layer
 {
 private:
 	EventKeyboard::KeyCode _pressedKey;
-	Vec2 _podVector;
+	Vec2 _heroVector;
 	bool _isMoving;
 	bool _combatMode;
 	Sprite *characterSprite;
-	MoveBy *moveby;
 
 	void update(float dt);
 
