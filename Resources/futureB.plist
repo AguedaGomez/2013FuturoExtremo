@@ -7,158 +7,158 @@
             <key>cartel_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,2},{186,40}}</string>
+                <string>{{115,2},{492,103}}</string>
                 <key>offset</key>
-                <string>{-7,11}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{25,9},{186,40}}</string>
+                <string>{{5,4},{492,103}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,2},{186,40}}</string>
+                <string>{{115,2},{492,103}}</string>
                 <key>offset</key>
-                <string>{-7,11}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{25,9},{186,40}}</string>
+                <string>{{5,4},{492,103}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,2},{186,40}}</string>
+                <string>{{115,2},{492,103}}</string>
                 <key>offset</key>
-                <string>{-7,11}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{25,9},{186,40}}</string>
+                <string>{{5,4},{492,103}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,2},{186,40}}</string>
+                <string>{{115,2},{492,103}}</string>
                 <key>offset</key>
-                <string>{-7,11}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{25,9},{186,40}}</string>
+                <string>{{5,4},{492,103}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{192,46}}</string>
+                <string>{{2,2},{500,111}}</string>
                 <key>offset</key>
-                <string>{-7,10}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{22,7},{192,46}}</string>
+                <string>{{0,0},{500,111}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
             <key>cartel_9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,2},{186,40}}</string>
+                <string>{{115,2},{492,103}}</string>
                 <key>offset</key>
-                <string>{-7,11}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{25,9},{186,40}}</string>
+                <string>{{5,4},{492,103}}</string>
                 <key>sourceSize</key>
-                <string>{250,80}</string>
+                <string>{500,111}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -166,13 +166,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>futureB.pvr</string>
+            <string>futureB.png</string>
             <key>size</key>
-            <string>{128,256}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2a0233d6ec68e3613ab6e2ec6a891ca3:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:f55773af2ed6b35e3219618b74164e2d:1/1$</string>
             <key>textureFileName</key>
-            <string>futureB.pvr</string>
+            <string>futureB.png</string>
         </dict>
     </dict>
 </plist>

@@ -88,16 +88,32 @@ void GameScene::placeHeroPROVISIONAL() {
 /* Carga y reproduce animacion cartel*/
 void GameScene::futureBuilding() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	futureBAnimation = Sprite::createWithSpriteFrameName("cartel_1.png");
-	futureBAnimation->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2)));
-	//futureBAnimation->init();
-	addChild(futureBAnimation, 1);
+	
+	SpriteFrameCache *frameCache = SpriteFrameCache::sharedSpriteFrameCache();
+	frameCache->addSpriteFramesWithFile("futureB.plist");
+	SpriteBatchNode  *spritesheet = SpriteBatchNode::create("futureB.png");
+	this->addChild(spritesheet);
 
-	// create the animation out of the frames
-	//Animation* animation = Animation::createWithSpriteFrames(futureBAnimation);
-	//Animate* animate = Animate::create(animation);
+	Vector<SpriteFrame*> futurebFrames;
+	futurebFrames.reserve(12);
+	for (int i = 1; i <= 12; i++) {
+		String *filename = String::createWithFormat("cartel_%d.png", i);
+		SpriteFrame *frame = SpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filename->getCString());
+		futurebFrames.pushBack(frame);
+	}
 
-	// run it and repeat it forever
+	Animation *lightAnim = Animation::createWithSpriteFrames(futurebFrames, 0.1);
+	Sprite *fb = Sprite::createWithSpriteFrameName("cartel_1.png");
+
+	Size winsize = Director::sharedDirector()->getWinSize();
+	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, winsize.height*0.5+120));
+
+	Action *action = RepeatForever::create(Animate::create(lightAnim));
+
+	fb->runAction(action);
+	spritesheet->addChild(fb);
+
+	
 	
 }
 
