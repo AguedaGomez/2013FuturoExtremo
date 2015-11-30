@@ -71,7 +71,7 @@ bool GameScene::init()
 void GameScene::setBackground() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el fondo
-	auto background = Sprite::create("fondo.png");
+	background = Sprite::create("fondo.png");
 	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)));
 	addChild(background, 0);
 }
@@ -111,7 +111,6 @@ void GameScene::futureBuilding() {
 	Animation *lightAnim = Animation::createWithSpriteFrames(futurebFrames, 0.1);
 	Sprite *fb = Sprite::createWithSpriteFrameName("cartel_1.png");
 
-	//Size winsize = Director::sharedDirector()->getWinSize();
 	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120));
 
 	Action *action = RepeatForever::create(Animate::create(lightAnim));
@@ -193,13 +192,14 @@ void GameScene::goToGameOverScene(Ref *pSebder)
 */
 void GameScene::update(float dt) {
 
-	//Size visibleSize = Director::getInstance()->getVisibleSize();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (_isMoving) {
 		
 		Vec2 newPos = Vec2(_playerSprite->getPosition().x + _heroVector.x, _playerSprite->getPosition().y + _heroVector.y);
-
-		_playerSprite->setPosition(newPos);
+		if (newPos.x >= (visibleSize.width - background->getContentSize().width + _playerSprite->getBoundingBox().size.width/2 +10) && 
+			newPos.x <= (visibleSize.width - _playerSprite->getBoundingBox().size.width / 2 -10))
+			_playerSprite->setPosition(newPos);
 	}
 
 	

@@ -11,6 +11,7 @@ class GameScene: public cocos2d::Layer
 {
 private:
 	EventKeyboard::KeyCode _pressedKey;
+	Sprite *background;
 	Vec2 _heroVector;
 	bool _isMoving;
 	bool _combatMode;
