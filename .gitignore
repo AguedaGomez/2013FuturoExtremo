@@ -3,3 +3,4 @@ cocos2d/
 proj.win32/
 CMakeLists.txt
 .cocos-project.json
+exit
