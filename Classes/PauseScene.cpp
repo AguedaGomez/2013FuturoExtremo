@@ -56,6 +56,5 @@ void PauseScene::retryGameScene(Ref *pSender)
 {
 	auto scene = GameScene::createScene();
 	Director::getInstance()->popScene();
-	Director::getInstance()->replaceScene(scene);
 }
 
