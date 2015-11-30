@@ -54,6 +54,9 @@ bool GameScene::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
+	//Scroll 
+	this->runAction(Follow::create(_playerSprite, Rect::ZERO));
+
 	//Lamada a update en intervalos de tiempo
 	this->schedule(schedule_selector(GameScene::update),0); 
 
