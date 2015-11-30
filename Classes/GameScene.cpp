@@ -85,7 +85,10 @@ void GameScene::placeHeroPROVISIONAL() {
 	addChild(_playerSprite, 1);
 }
 
-/* Carga y reproduce animacion cartel*/
+/* 
+	FUTUREBUILDING
+Carga y reproduce animacion cartel
+*/
 void GameScene::futureBuilding() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
@@ -105,16 +108,13 @@ void GameScene::futureBuilding() {
 	Animation *lightAnim = Animation::createWithSpriteFrames(futurebFrames, 0.1);
 	Sprite *fb = Sprite::createWithSpriteFrameName("cartel_1.png");
 
-	Size winsize = Director::sharedDirector()->getWinSize();
-	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, winsize.height*0.5+120));
+	//Size winsize = Director::sharedDirector()->getWinSize();
+	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120));
 
 	Action *action = RepeatForever::create(Animate::create(lightAnim));
 
 	fb->runAction(action);
 	spritesheet->addChild(fb);
-
-	
-	
 }
 
 /*

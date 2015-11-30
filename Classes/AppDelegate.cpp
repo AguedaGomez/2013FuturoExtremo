@@ -41,7 +41,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 
-		glview = GLViewImpl::createWithFullScreen("futuroextremo"); // PANTALLA COMPLETA
+		//glview = GLViewImpl::createWithFullScreen("futuroextremo"); // PANTALLA COMPLETA
+		glview = GLViewImpl::createWithRect("futuroextremo", Rect(0, 0, 1280, 720), 1.0);//VENTANA
 
 #else
         glview = GLViewImpl::create("futuroextremo");
@@ -64,9 +65,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     auto scene = MainMenu::createScene();
 
-	/* carga el sprite sheet en el spriteframecahe */ 
-	auto spritecache = SpriteFrameCache::getInstance();
-	spritecache->addSpriteFramesWithFile("futureB.plist");
     // run
     director->runWithScene(scene);
 

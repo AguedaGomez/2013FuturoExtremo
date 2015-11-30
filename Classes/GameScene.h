@@ -5,7 +5,7 @@
 
 USING_NS_CC;
 
-const int HERO_STEP_MOVE = 1;
+const int HERO_STEP_MOVE = 2;
 
 class GameScene: public cocos2d::Layer
 {
