@@ -83,7 +83,7 @@ void GameScene::setBackground() {
 void GameScene::placeHeroPROVISIONAL() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el personaje
-	_playerSprite = Sprite::create("NickColtrane_estatico.png");
+	_playerSprite = Sprite::create("NickColtrane_estatic.png");
 	//_playerSpriteCombat = Sprite::create("NickColtrane_combate.png");
 	_playerSprite->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2 + 21))); //El +5 es para cuadrarlo justo sobre el suelo
 	addChild(_playerSprite, 1);
@@ -144,12 +144,12 @@ void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
 			_combatMode = true;
 			log("Coltrane esta en modo combate");
-			_playerSprite->setTexture("NickColtrane_combate.png");
+			_playerSprite->setTexture("NickColtrane_combat.png");
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 			_combatMode = false;
 			log("Coltrane esta en modo normal");
-			_playerSprite->setTexture("NickColtrane_estatico.png");
+			_playerSprite->setTexture("NickColtrane_estatic.png");
 			break;
 	}
 	
