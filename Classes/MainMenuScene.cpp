@@ -27,8 +27,11 @@ bool MainMenu::init()
     {
         return false;
     }
-    
-	auto botonPlay = MenuItemImage::create("Boton_play.png", "Boton_play.png", 
+
+
+   
+
+	auto botonPlay = MenuItemImage::create("play_off.png", "play_on.png", 
 										CC_CALLBACK_1(MainMenu::goToGameScene,this));
 
 	auto menu = Menu::create(botonPlay, NULL);
@@ -41,6 +44,10 @@ bool MainMenu::init()
     
     return true;
 }
+
+
+
+
 
 void MainMenu::goToGameScene(Ref *pSender)
 {

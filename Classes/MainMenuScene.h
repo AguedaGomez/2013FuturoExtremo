@@ -5,11 +5,18 @@
 
 class MainMenu : public cocos2d::Layer
 {
+private:
+	
+
+
 public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
     
+
+
+
 	void goToGameScene(Ref *pSender);
 
     // implement the "static create()" method manually

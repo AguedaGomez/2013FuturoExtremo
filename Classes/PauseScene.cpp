@@ -31,8 +31,8 @@ bool PauseScene::init()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto menuBotton = MenuItemImage::create("volvermenu.png", "volvermenu.png", CC_CALLBACK_1(PauseScene::goToMainMenu, this));
-	auto playBotton = MenuItemImage::create("jugar.png", "jugar.png", CC_CALLBACK_1(PauseScene::retryGameScene, this));
+	auto menuBotton = MenuItemImage::create("exit_3.png", "exit_click.png", CC_CALLBACK_1(PauseScene::goToMainMenu, this));
+	auto playBotton = MenuItemImage::create("resume_3.png", "resume_click.png", CC_CALLBACK_1(PauseScene::retryGameScene, this));
 	auto menu = Menu::create(menuBotton, playBotton, NULL);
 	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
 	addChild(menu, 1);
