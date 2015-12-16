@@ -6,7 +6,7 @@
 class MainMenu : public cocos2d::Layer
 {
 private:
-	
+	Sprite *menubackground;
 
 
 public:
@@ -16,7 +16,7 @@ public:
     
 
 
-
+	void setMenuBackground();
 	void goToGameScene(Ref *pSender);
 
     // implement the "static create()" method manually

@@ -28,6 +28,7 @@ bool MainMenu::init()
         return false;
     }
 
+	setMenuBackground();
 
    
 
@@ -45,7 +46,17 @@ bool MainMenu::init()
     return true;
 }
 
-
+/*
+SETMENUBACKGROUND
+Establece el Fondo
+*/
+void MainMenu::setMenuBackground() {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	//Carga el fondo
+	menubackground = Sprite::create("inicio_provisional.png");
+	menubackground->setPosition(Point((visibleSize.width - menubackground->getContentSize().width / 2), (visibleSize.height / 2)));
+	addChild(menubackground, 0);
+}
 
 
 
