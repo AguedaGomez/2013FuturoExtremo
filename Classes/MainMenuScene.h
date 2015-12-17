@@ -20,6 +20,7 @@ public:
 
 	void setMenuBackground();
 	void goToGameScene(Ref *pSender);
+	void goToContextScene(Ref *pSender);
 
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);

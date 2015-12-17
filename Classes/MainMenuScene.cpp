@@ -1,5 +1,6 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
+#include "ContextScene.h"
 
 USING_NS_CC;
 
@@ -32,7 +33,7 @@ bool MainMenu::init()
 
    
 
-	auto botonPlay = MenuItemImage::create("play_off.png", "play_on.png", CC_CALLBACK_1(MainMenu::goToGameScene,this));
+	auto botonPlay = MenuItemImage::create("play_off.png", "play_on.png", CC_CALLBACK_1(MainMenu::goToContextScene,this));
 
 	auto menu = Menu::create(botonPlay, NULL);
 
@@ -62,5 +63,11 @@ void MainMenu::setMenuBackground() {
 void MainMenu::goToGameScene(Ref *pSender)
 {
 	auto scene = GameScene::createScene();
+	Director::getInstance()->replaceScene(scene);
+}
+
+void MainMenu::goToContextScene(Ref *pSender)
+{
+	auto scene = ContextScene::createScene();
 	Director::getInstance()->replaceScene(scene);
 }
