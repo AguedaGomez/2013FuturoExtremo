@@ -32,8 +32,7 @@ bool MainMenu::init()
 
    
 
-	auto botonPlay = MenuItemImage::create("play_off.png", "play_on.png", 
-										CC_CALLBACK_1(MainMenu::goToGameScene,this));
+	auto botonPlay = MenuItemImage::create("play_off.png", "play_on.png", CC_CALLBACK_1(MainMenu::goToGameScene,this));
 
 	auto menu = Menu::create(botonPlay, NULL);
 
@@ -53,8 +52,8 @@ Establece el Fondo
 void MainMenu::setMenuBackground() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el fondo
-	menubackground = Sprite::create("inicio_provisional.png");
-	menubackground->setPosition(Point((visibleSize.width - menubackground->getContentSize().width / 2), (visibleSize.height / 2)));
+	menubackground = Sprite::create("inicio_provisional.jpg");
+	menubackground->setPosition(Point((visibleSize.width - menubackground->getContentSize().width / 2),(visibleSize.height / 2)));
 	addChild(menubackground, 0);
 }
 

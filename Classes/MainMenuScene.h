@@ -3,12 +3,14 @@
 
 #include "cocos2d.h"
 
+USING_NS_CC;
+
 class MainMenu : public cocos2d::Layer
 {
 private:
 	Sprite *menubackground;
 
-
+	
 public:
     static cocos2d::Scene* createScene();
 
