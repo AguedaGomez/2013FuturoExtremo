@@ -2,6 +2,7 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Enemy.h"
 
 USING_NS_CC;
 
@@ -17,6 +18,8 @@ private:
 	bool _combatMode;
 	Sprite *characterSprite;
 	Sprite *futureBAnimation;
+
+	
 	
 
 	void update(float dt);
@@ -24,6 +27,7 @@ private:
 public:
 	static cocos2d::Scene* createScene();
 	Sprite *_playerSprite;
+	Enemy *enemy;
 
 	virtual bool init();
 

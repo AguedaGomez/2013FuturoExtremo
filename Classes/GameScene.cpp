@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "PauseScene.h"
 #include "GameOverScene.h"
+#include "Enemy.h"
 
 
 USING_NS_CC;
@@ -40,6 +41,13 @@ bool GameScene::init()
 	setBackground();
 	placeHeroPROVISIONAL();
 	futureBuilding();
+
+	enemy = Enemy::create();
+	enemy->retain();
+	enemy->posIni = 400;
+	enemy->setPositionX(enemy->posIni);
+	addChild(enemy, 1);
+	addChild(enemy->circle, 1);
 
 
 	//inciar la variable de de las teclas
@@ -207,5 +215,6 @@ void GameScene::update(float dt) {
 			_playerSprite->setPosition(newPos);
 	}
 
+	enemy->updateEnemy();
 	
 }
