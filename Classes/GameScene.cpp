@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "PauseScene.h"
 #include "GameOverScene.h"
+#include "Enemy.h"
 
 
 USING_NS_CC;
@@ -38,6 +39,14 @@ bool GameScene::init()
 	}
 	
 	setBackground();
+	futureBuilding();
+
+	enemy = Enemy::create();
+	enemy->retain();
+	enemy->posIni = 400;
+	enemy->setPositionX(enemy->posIni);
+	addChild(enemy, 1);
+	addChild(enemy->circle, 1);
 
 	futureBuilding();
 	hero = Hero::create();
@@ -168,5 +177,6 @@ void GameScene::update(float dt) {
 
 	hero->updateHero(visibleSize, background->getContentSize().width);
 
+	enemy->updateEnemy();
 	
 }
