@@ -38,16 +38,15 @@ bool GameScene::init()
 	}
 	
 	setBackground();
-	placeHeroPROVISIONAL();
+
 	futureBuilding();
-
-
+	hero = Hero::create();
+	hero->initOptions();
+	hero->placeHero(Director::getInstance()->getVisibleSize());
+	addChild(hero, 1);
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
-	_heroVector = Vec2::ZERO; 
-	_isMoving = false;
-	_combatMode = false;
-
+	
 	//Eventos/Callbacks de teclado
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
@@ -55,7 +54,7 @@ bool GameScene::init()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
 	//Scroll 
-	this->runAction(Follow::create(_playerSprite, Rect::ZERO));
+	this->runAction(Follow::create(hero, Rect::ZERO));
 
 	//Lamada a update en intervalos de tiempo
 	this->schedule(schedule_selector(GameScene::update),0); 
@@ -76,18 +75,7 @@ void GameScene::setBackground() {
 	addChild(background, 0);
 }
 
-/*
-	PLACEHEROPROVISIONAL
-	Coloca al personaje principal_ esta funcion no va aqui, luego tendrá su propia clase
-*/
-void GameScene::placeHeroPROVISIONAL() {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	//Carga el personaje
-	_playerSprite = Sprite::create("NickColtrane_estatic.png");
-	//_playerSpriteCombat = Sprite::create("NickColtrane_combate.png");
-	_playerSprite->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - _playerSprite->getContentSize().height / 2 + 21))); //El +5 es para cuadrarlo justo sobre el suelo
-	addChild(_playerSprite, 1);
-}
+
 
 /* 
 	FUTUREBUILDING
@@ -130,27 +118,7 @@ void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 	switch (_pressedKey){
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 			goToPauseScene(this);
-			break;
-		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-			_isMoving = true;
-			_heroVector = Vec2(-HERO_STEP_MOVE, 0);
-			_playerSprite->setScaleX(-1.0);
-			break;
-		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-			_isMoving = true;
-			_heroVector = Vec2(HERO_STEP_MOVE, 0);
-			_playerSprite->setScaleX(1.0);
-			break;
-		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-			_combatMode = true;
-			log("Coltrane esta en modo combate");
-			_playerSprite->setTexture("NickColtrane_combat.png");
-			break;
-		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-			_combatMode = false;
-			log("Coltrane esta en modo normal");
-			_playerSprite->setTexture("NickColtrane_estatic.png");
-			break;
+			break;	
 	}
 	
 }
@@ -165,8 +133,7 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
 
 	if (_pressedKey == keyCode) {
 		_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
-		_isMoving = false;
-		_heroVector = Vec2::ZERO;
+		
 	}
 }
 
@@ -199,13 +166,7 @@ void GameScene::update(float dt) {
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	if (_isMoving) {
-		
-		Vec2 newPos = Vec2(_playerSprite->getPosition().x + _heroVector.x, _playerSprite->getPosition().y + _heroVector.y);
-		if (newPos.x >= (visibleSize.width - background->getContentSize().width + _playerSprite->getBoundingBox().size.width/2 +10) && 
-			newPos.x <= (visibleSize.width - _playerSprite->getBoundingBox().size.width / 2 -10))
-			_playerSprite->setPosition(newPos);
-	}
+	hero->updateHero(visibleSize, background->getContentSize().width);
 
 	
 }

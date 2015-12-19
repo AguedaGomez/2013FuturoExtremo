@@ -2,6 +2,7 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Hero.h"
 
 USING_NS_CC;
 
@@ -12,12 +13,8 @@ class GameScene: public cocos2d::Layer
 private:
 	EventKeyboard::KeyCode _pressedKey;
 	Sprite *background;
-	Vec2 _heroVector;
-	bool _isMoving;
-	bool _combatMode;
-	Sprite *characterSprite;
 	Sprite *futureBAnimation;
-	
+	Hero *hero;
 
 	void update(float dt);
 
@@ -31,7 +28,6 @@ public:
 	void goToGameOverScene(Ref *pSender);
 
 	void setBackground();
-	void placeHeroPROVISIONAL();
 	void futureBuilding();
 
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event);
