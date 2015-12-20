@@ -73,17 +73,21 @@ void CollisionManager::enemiesHitHero()
 
 void CollisionManager::heroHitsEnemies()
 {
-	float hX = hero->getPositionX();
-	float hY = hero->getPositionY();
-	float eX;
-	float eY;
-
-	for (int i = 0; i < enemies.size(); i++) {
-		if ((ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemySmallRadius + hero->heroBigRadius)) && (hero->_isHitting)) {
-			log("NICK golpea a enemigo%d",enemies.at(i));
+	if (hero->_isHitting) {
+		float hX = hero->getPositionX();
+		float hY = hero->getPositionY();
+		float eX;
+		float eY;
+		log("Nick lanza un golpe");
+		for (int i = 0; i < enemies.size(); i++) {
+			eX = enemies.at(i)->getPositionX();
+			eY = enemies.at(i)->getPositionY();
+			if (ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemySmallRadius + hero->heroBigRadius)) {
+				log("NICK golpea a enemigo%d", enemies.at(i));
+			}
 		}
 	}
-
+	hero->_isHitting = false;
 }
 
 void CollisionManager::heroTouchObject()

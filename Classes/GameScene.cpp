@@ -210,17 +210,17 @@ void GameScene::goToGameOverScene(Ref *pSebder)
 void GameScene::hud()
 {
 	loadingBarRed = LoadingBar::create("LoadingBarRed.png");
-	loadingBarRed->setPosition(Vec2(hero->getPositionX()-400, 70));
+	loadingBarRed->setPosition(Vec2(hero->getPositionX()-400, -50));
 	loadingBarRed->setPercent(100);
 	addChild(loadingBarRed, 2);
 
 	loadingBarBlue = LoadingBar::create("LoadingBarBlue.png");
-	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, 20));
+	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, -100));
 	loadingBarBlue->setPercent(100);
 	addChild(loadingBarBlue, 2);
 
 	loadingBarGreen = LoadingBar::create("LoadingBarGreen.png");
-	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -30));
+	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -150));
 	loadingBarGreen->setPercent(100);
 	addChild(loadingBarGreen, 2);
 	
@@ -290,9 +290,9 @@ void GameScene::update(float dt) {
 
 	hero->updateHero(visibleSize, background->getContentSize().width);
 	
-	loadingBarRed->setPosition(Vec2(hero->getPositionX() - 400, 70)); //cada frame hay que actualizar la posición de todas las barras para que siempre estén en pantalla
-	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, 20));
-	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -30));
+	loadingBarRed->setPosition(Vec2(hero->getPositionX() - 400, -50)); //cada frame hay que actualizar la posición de todas las barras para que siempre estén en pantalla
+	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, -100));
+	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -150));
 
 	enemiesManager->updateEnemies();
 	checkEnergy();

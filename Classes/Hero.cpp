@@ -107,23 +107,24 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 		green = true;
 		break;
 	case EventKeyboard::KeyCode::KEY_SPACE:
-		if (red) {
-			red = false;
-			levelRed--;
-			
-		}	
-		else if (blue) {
-			blue = false;
-			levelBlue--;
-			
-		}
-		else if (green) {
-			green = false;
-			levelGreen--;
-			
-		}
-		if (this->_combatMode)
+		if (this->_combatMode) {
+			if (red) {
+				red = false;
+				levelRed--;
+
+			}
+			else if (blue) {
+				blue = false;
+				levelBlue--;
+
+			}
+			else if (green) {
+				green = false;
+				levelGreen--;
+
+			}
 			this->_isHitting = true;
+		}
 		break;
 	}
 
@@ -136,11 +137,16 @@ Comportamiento al levantar las teclas
 void Hero::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
 
 	auto _pressedKey = keyCode;
-
+	switch (_pressedKey) {
+	case EventKeyboard::KeyCode::KEY_SPACE:
+		this->_isHitting = false;
+		break;
+	}
 	if (_pressedKey == keyCode) {
 		_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
 		_isMoving = false;
 		_heroVector = Vec2::ZERO;
+		this->_isHitting = false;
 	}
 }
 
