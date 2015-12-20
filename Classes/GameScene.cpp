@@ -88,7 +88,7 @@ void GameScene::setBackground() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el fondo
 	background = Sprite::create("fondo.png");
-	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)));
+	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)- 120));
 	addChild(background, 0);
 }
 
@@ -117,7 +117,7 @@ void GameScene::futureBuilding() {
 	Animation *lightAnim = Animation::createWithSpriteFrames(futurebFrames, 0.1);
 	Sprite *fb = Sprite::createWithSpriteFrameName("cartel_1.png");
 
-	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120));
+	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120-125));
 
 	Action *action = RepeatForever::create(Animate::create(lightAnim));
 

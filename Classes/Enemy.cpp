@@ -68,7 +68,7 @@ void Enemy::selectionActionMood(float dt)
 
 void Enemy::placeEnemy(int x, int y)
 {
-	this->setPosition(Vec2(x, y));
+	this->setPosition(Vec2(x,y));
 }
 
 /*

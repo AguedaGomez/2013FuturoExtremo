@@ -43,6 +43,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 		//glview = GLViewImpl::createWithFullScreen("futuroextremo"); // PANTALLA COMPLETA
 		glview = GLViewImpl::createWithRect("futuroextremo", Rect(0, 0, 1280, 720), 1.0);//VENTANA
+		
 
 #else
         glview = GLViewImpl::create("futuroextremo");

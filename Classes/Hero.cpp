@@ -48,7 +48,7 @@ Coloca al personaje principal en su posicion inicial
 */
 void Hero::placeHero(Size vS) {
 	Size visibleSize = vS; // Director::getInstance()->getVisibleSize();
-	this->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - this->getContentSize().height / 2 + 21))); //El +5 es para cuadrarlo justo sobre el suelo
+	this->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - this->getContentSize().height / 2 + 21 - 120)));
 	
 }
 

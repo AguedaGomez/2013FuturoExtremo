@@ -37,10 +37,10 @@ void EnemiesManager::createEnemies(int nivel)
 			enemies.insert(i, Enemy::create());
 			enemies.at(i)->retain();
 		}
-		enemies.at(0)->posIni = 100;
-		enemies.at(0)->placeEnemy(100, 100); //posiciones provisionales
-		enemies.at(0)->posIni = 200;
-		enemies.at(1)->placeEnemy(200, 200);
+		enemies.at(0)->posIni = -1000; //enemigo descansillo
+		enemies.at(0)->placeEnemy(-1000, 878); //878 hace que quede sobre el suelo cuando están en la segunda planta.
+		enemies.at(1)->posIni = 0; //enemigo pasillo de habitaciones
+		enemies.at(1)->placeEnemy(0, 878);
 		break;
 	}
 
