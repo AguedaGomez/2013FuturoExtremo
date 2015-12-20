@@ -51,16 +51,25 @@ bool GameScene::init()
 	enemiesManager->retain();
 	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
 		addChild(enemiesManager->enemies.at(i), 1);
-		addChild(enemiesManager->enemies.at(i)->circle, 1);
+		addChild(enemiesManager->enemies.at(i)->enemyBigCircle, 1);
+		addChild(enemiesManager->enemies.at(i)->enemySmallCircle, 1);
 	}
-	
 	
 
 	futureBuilding();
 	hero = Hero::create();
 	hero->initOptions();
 	hero->placeHero(Director::getInstance()->getVisibleSize());
+	//hero->retain();
 	addChild(hero, 1);
+	addChild(hero->heroSmallCircle, 1);
+	addChild(hero->heroBigCircle, 1);
+	
+	collisionManager = CollisionManager::create();
+	collisionManager->retain();
+	collisionManager->initCollisions(hero, enemiesManager->enemies);
+	
+	
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
 	
@@ -186,5 +195,6 @@ void GameScene::update(float dt) {
 	hero->updateHero(visibleSize, background->getContentSize().width);
 
 	enemiesManager->updateEnemies();
+	collisionManager->updateCollisions();
 	
 }

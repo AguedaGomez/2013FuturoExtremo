@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Hero.h"
 #include "EnemiesManager.h"
+#include "CollisionManager.h"
 
 
 USING_NS_CC;
@@ -17,6 +18,7 @@ private:
 	Sprite *background;
 	Sprite *futureBAnimation;
 	Hero *hero;
+	CollisionManager *collisionManager;
 
 	void update(float dt);
 

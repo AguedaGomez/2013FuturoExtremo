@@ -3,13 +3,27 @@
 
 #include "cocos2d.h"
 
-class CollisionManager 
+class CollisionManager : public cocos2d::Ref
 {
 public:
 	CollisionManager();
 	~CollisionManager();
 
+	static CollisionManager* create();
+
+	void initCollisions(Hero *hero, Vector<Enemy*> enemies /*Vector<DrawNode*> objects*/);
+
 	void updateCollisions();
+
+	void enemiesHitHero();
+	void heroHitsEnemies();
+	void heroTouchObject();
+	void heroHitsObject();
+
+private:
+	Hero *hero;
+	Vector<Enemy*> enemies;
+	Vector<DrawNode*> objectsCircles;
 
 };
 
