@@ -18,7 +18,17 @@ public:
 	bool red;
 	bool green;
 	bool blue;
-	
+	bool _hits;
+	bool _isHitted;
+
+	float heroSmallRadius;
+	float heroBigRadius;
+
+	DrawNode *heroSmallCircle;
+	DrawNode *heroBigCircle;
+
+
+
 
 	Hero();
 	~Hero();
@@ -38,7 +48,7 @@ public:
 private:
 	Vec2 _heroVector;
 	EventKeyboard::KeyCode _pressedKey;
-
+	const int HERO_STEP_MOVE = 3;
 };
 
 #endif 

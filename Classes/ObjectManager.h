@@ -3,15 +3,20 @@
 
 #include "cocos2d.h"
 
-class ObjectManager
+class ObjectManager : public cocos2d::Ref
 {
 public:
 	ObjectManager();
 	~ObjectManager();
 
-	void cargaSpritesNivel(int nivel);
+	static ObjectManager* create();
 
-	void creaCirculosColision(int nivel);
+	Vector<Sprite*> objects;
+	Vector<DrawNode*> circlesObjects;
+	
+	void loadLevelObjects(int nivel);
+
+	void createCollisionCircles();
 
 
 };

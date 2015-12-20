@@ -3,9 +3,9 @@
 #include "GameOverScene.h"
 #include "EnemiesManager.h"
 #include "ui/CocosGUI.h"
+#include "ObjectManager.h"
 
 using namespace cocos2d::ui;
-
 
 USING_NS_CC;
 
@@ -46,27 +46,23 @@ bool GameScene::init()
 	nivel = 0;
 	
 
-	/*Se crea un objeto que maneja todos los enemigos
-	con un bucle se recorre el vector que contiene todos los enemigos
-	para que aparezcan en escena
-	*/
-	enemiesManager = EnemiesManager::create();
-	enemiesManager->createEnemies(nivel);
-	enemiesManager->retain();
-	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
-		addChild(enemiesManager->enemies.at(i), 1);
-		addChild(enemiesManager->enemies.at(i)->circle, 1);
-	}
+	initEnemiesManager();
+	initObjectManager();
 	
-	
-
 	futureBuilding();
 	hero = Hero::create();
 	hero->initOptions();
 	hero->placeHero(Director::getInstance()->getVisibleSize());
 	addChild(hero, 1);
+	addChild(hero->heroSmallCircle, 1);
+	addChild(hero->heroBigCircle, 1);
+
+	collisionManager = CollisionManager::create();
+	collisionManager->retain();
+	collisionManager->initCollisions(hero, enemiesManager->enemies);
 
 	hud();
+
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
 	
@@ -94,7 +90,7 @@ void GameScene::setBackground() {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//Carga el fondo
 	background = Sprite::create("fondo.png");
-	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)));
+	background->setPosition(Point((visibleSize.width - background->getContentSize().width / 2), (visibleSize.height / 2)- 120));
 	addChild(background, 0);
 }
 
@@ -123,12 +119,38 @@ void GameScene::futureBuilding() {
 	Animation *lightAnim = Animation::createWithSpriteFrames(futurebFrames, 0.1);
 	Sprite *fb = Sprite::createWithSpriteFrameName("cartel_1.png");
 
-	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120));
+	fb->setPosition(ccp(visibleSize.width-fb->getContentSize().width+180, visibleSize.height*0.5+120-125));
 
 	Action *action = RepeatForever::create(Animate::create(lightAnim));
 
 	fb->runAction(action);
 	spritesheet->addChild(fb);
+}
+
+void GameScene::initEnemiesManager()
+{
+	enemiesManager = EnemiesManager::create();
+	enemiesManager->createEnemies(nivel);
+	enemiesManager->retain();
+	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
+		addChild(enemiesManager->enemies.at(i), 1);
+		addChild(enemiesManager->enemies.at(i)->enemyBigCircle, 1);
+		addChild(enemiesManager->enemies.at(i)->enemySmallCircle, 1);
+	}
+}
+
+void GameScene::initObjectManager()
+{
+	objectManager = ObjectManager::create();
+	objectManager->loadLevelObjects(nivel);
+	objectManager->createCollisionCircles();
+	objectManager->retain();
+	for (int i = 0; i < objectManager->circlesObjects.size(); i++) {
+		addChild(objectManager->objects.at(i), 1);
+		addChild(objectManager->circlesObjects.at(i), 1);
+		
+	}
+		
 }
 
 /*
@@ -274,6 +296,7 @@ void GameScene::update(float dt) {
 
 	enemiesManager->updateEnemies();
 	checkEnergy();
+	collisionManager->updateCollisions();
 
 	
 }
