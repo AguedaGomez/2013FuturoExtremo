@@ -18,7 +18,7 @@ public:
 	bool red;
 	bool green;
 	bool blue;
-	bool _hits;
+	bool _isHitting;
 	bool _isHitted;
 
 	float heroSmallRadius;

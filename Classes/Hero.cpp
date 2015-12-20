@@ -122,6 +122,8 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 			levelGreen--;
 			
 		}
+		if (this->_combatMode)
+			this->_isHitting = true;
 		break;
 	}
 
