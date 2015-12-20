@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Hero.h"
 #include "EnemiesManager.h"
+#include "ObjectManager.h"
 
 
 USING_NS_CC;
@@ -24,6 +25,7 @@ public:
 	static cocos2d::Scene* createScene();
 	Sprite *_playerSprite;
 	EnemiesManager *enemiesManager;
+	ObjectManager *objectManager;
 	int nivel;
 
 	virtual bool init();
@@ -33,7 +35,8 @@ public:
 
 	void setBackground();
 	void futureBuilding();
-
+	void initEnemiesManager();
+	void initObjectManager();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event);
 

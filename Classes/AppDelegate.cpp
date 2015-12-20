@@ -65,6 +65,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     auto scene = MainMenu::createScene();
 
+	//spritesheet
+	//auto spritecache = SpriteFrameCache::getInstance();
+	//spritecache->addSpriteFramesWithFile("nombresspriteshee.plist");
+
     // run
     director->runWithScene(scene);
 

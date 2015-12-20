@@ -2,6 +2,7 @@
 #include "PauseScene.h"
 #include "GameOverScene.h"
 #include "EnemiesManager.h"
+#include "ObjectManager.h"
 
 
 USING_NS_CC;
@@ -41,21 +42,8 @@ bool GameScene::init()
 	setBackground();
 	futureBuilding();
 	nivel = 0;
-
-	/*Se crea un objeto que maneja todos los enemigos
-	con un bucle se recorre el vector que contiene todos los enemigos
-	para que aparezcan en escena
-	*/
-	enemiesManager = EnemiesManager::create();
-	enemiesManager->createEnemies(nivel);
-	enemiesManager->retain();
-	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
-		addChild(enemiesManager->enemies.at(i), 1);
-		addChild(enemiesManager->enemies.at(i)->circle, 1);
-	}
-	
-	
-
+	initEnemiesManager();
+	initObjectManager();
 	futureBuilding();
 	hero = Hero::create();
 	hero->initOptions();
@@ -123,6 +111,27 @@ void GameScene::futureBuilding() {
 
 	fb->runAction(action);
 	spritesheet->addChild(fb);
+}
+
+void GameScene::initEnemiesManager()
+{
+	enemiesManager = EnemiesManager::create();
+	enemiesManager->createEnemies(nivel);
+	enemiesManager->retain();
+	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
+		addChild(enemiesManager->enemies.at(i), 1);
+		addChild(enemiesManager->enemies.at(i)->circle, 1);
+	}
+}
+
+void GameScene::initObjectManager()
+{
+	objectManager = ObjectManager::create();
+	objectManager->loadLevelObjects(nivel);
+	objectManager->createCollisionCircles();
+	objectManager->retain();
+	for (int i = 0; i < objectManager->circlesObjects.size(); i++)
+		addChild(objectManager->circlesObjects.at(1), 1);
 }
 
 /*
