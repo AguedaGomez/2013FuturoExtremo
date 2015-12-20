@@ -32,6 +32,11 @@ void Hero::initOptions()
 	_heroVector = Vec2::ZERO;
 	_isMoving = false;
 	_combatMode = false;
+	green = false;
+	blue = false;
+	levelRed = 4;
+	levelBlue = 4;
+	levelGreen = 4;
 }
 
 void Hero::addEvents()
@@ -79,6 +84,32 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 		_combatMode = false;
 		log("Coltrane esta en modo normal");
 		this->setTexture("NickColtrane_estatic.png");
+		break;
+	case EventKeyboard::KeyCode::KEY_Q:
+		red = true;
+		break;
+	case EventKeyboard::KeyCode::KEY_W:
+		blue = true;
+		break;
+	case EventKeyboard::KeyCode::KEY_E:
+		green = true;
+		break;
+	case EventKeyboard::KeyCode::KEY_SPACE:
+		if (red) {
+			red = false;
+			levelRed--;
+			
+		}	
+		else if (blue) {
+			blue = false;
+			levelBlue--;
+			
+		}
+		else if (green) {
+			green = false;
+			levelGreen--;
+			
+		}
 		break;
 	}
 

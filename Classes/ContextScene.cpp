@@ -38,7 +38,9 @@ bool ContextScene::init()
 	
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
-
+	auto provisionalText = Label::createWithTTF("Pantalla de contexto", "Marker Felt.ttf", 24);
+	provisionalText->setPosition(Vec2(600, 600));
+	addChild(provisionalText, 0);
     return true;
 }
 

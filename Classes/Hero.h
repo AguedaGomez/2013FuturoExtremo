@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
-
+using namespace cocos2d::ui;
 
 class Hero : public cocos2d::Sprite
 {
@@ -12,6 +12,12 @@ public:
 
 	bool _isMoving;
 	bool _combatMode;
+	int levelRed;
+	int levelGreen;
+	int levelBlue;
+	bool red;
+	bool green;
+	bool blue;
 	
 
 	Hero();
