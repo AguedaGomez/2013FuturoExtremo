@@ -130,8 +130,12 @@ void GameScene::initObjectManager()
 	objectManager->loadLevelObjects(nivel);
 	objectManager->createCollisionCircles();
 	objectManager->retain();
-	for (int i = 0; i < objectManager->circlesObjects.size(); i++)
-		addChild(objectManager->circlesObjects.at(1), 1);
+	for (int i = 0; i < objectManager->circlesObjects.size(); i++) {
+		addChild(objectManager->objects.at(i), 1);
+		addChild(objectManager->circlesObjects.at(i), 1);
+		
+	}
+		
 }
 
 /*

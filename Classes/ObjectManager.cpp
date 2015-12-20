@@ -33,7 +33,7 @@ void ObjectManager::loadLevelObjects(int nivel)
 		colaMachine->setPosition(400,400);
 		objects.insert(0, colaMachine);
 
-		Sprite *expMachine = Sprite::createWithSpriteFrameName("expendedora");
+		Sprite *expMachine = Sprite::createWithSpriteFrameName("expendedora.png");
 		expMachine->setPosition(0, 400);
 		objects.insert(1, expMachine);
 
