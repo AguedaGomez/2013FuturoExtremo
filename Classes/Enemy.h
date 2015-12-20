@@ -9,7 +9,12 @@ USING_NS_CC;
 class Enemy : public cocos2d::Sprite
 {
 public:
-	
+	bool _agressive;
+	bool _atacking;
+
+	float enemySmallRadius;
+	float enemyBigRadius;
+
 
 	Enemy();
 	~Enemy();
@@ -20,7 +25,8 @@ public:
 	void selectionActionMood(float dt);
 	void placeEnemy(int x, int y);
 
-	DrawNode *circle;
+	DrawNode *enemySmallCircle;
+	DrawNode *enemyBigCircle;
 	int posIni;
 	bool atack;
 

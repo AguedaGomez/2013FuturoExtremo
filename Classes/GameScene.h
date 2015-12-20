@@ -5,11 +5,13 @@
 #include "Hero.h"
 #include "EnemiesManager.h"
 #include "ObjectManager.h"
+#include "CollisionManager.h"
+
 
 
 USING_NS_CC;
 
-const int HERO_STEP_MOVE = 2;
+
 
 class GameScene: public cocos2d::Layer
 {
@@ -18,6 +20,7 @@ private:
 	Sprite *background;
 	Sprite *futureBAnimation;
 	Hero *hero;
+	CollisionManager *collisionManager;
 
 	void update(float dt);
 
