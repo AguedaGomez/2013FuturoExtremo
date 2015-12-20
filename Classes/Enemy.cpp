@@ -13,7 +13,7 @@ Enemy* Enemy::create()
 	Enemy * pSprite = new Enemy();
 	log("Se ha creado enemigo");
 
-	if (pSprite->initWithFile("imagen_test.png")) {
+	if (pSprite->initWithFile("enemigo1Apagado.png")) {
 
 		pSprite->autorelease();
 		pSprite->initOptions();

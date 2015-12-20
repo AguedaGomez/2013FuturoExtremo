@@ -39,7 +39,7 @@ bool MainMenu::init()
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
+	menu->setPosition(Point(visibleSize.width/2, visibleSize.height/2 - 200));
 	addChild(menu, 1);
 
     
