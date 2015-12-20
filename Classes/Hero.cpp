@@ -47,9 +47,17 @@ PLACEHERO
 Coloca al personaje principal en su posicion inicial
 */
 void Hero::placeHero(Size vS) {
-	Size visibleSize = vS; // Director::getInstance()->getVisibleSize();
+	Size visibleSize = vS;
+	heroSmallRadius = this->getContentSize().width / 2.5;
+	heroBigRadius = this->getContentSize().width;
+	heroSmallCircle = DrawNode::create();
+	heroSmallCircle->drawCircle(this->getPosition(), heroSmallRadius, 1.0, 20, false, Color4F(1, 0, 0, 1));
+	heroBigCircle = DrawNode::create();
+	heroBigCircle->drawCircle(this->getPosition(), heroBigRadius , 1.0, 20, false, Color4F(0, 1, 0, 1));
 	this->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - this->getContentSize().height / 2 + 21))); //El +5 es para cuadrarlo justo sobre el suelo
 	
+	//heroCircle->retain();
+	log("TEST: radio del circuloPequeñoHeroe %f", this->getContentSize().width / 3.5);
 }
 
 /*
@@ -111,9 +119,17 @@ void Hero::updateHero(Size vS, double backgroundWidth) {
 
 		Vec2 newPos = Vec2(this->getPosition().x + _heroVector.x, this->getPosition().y + _heroVector.y);
 		if (newPos.x >= (visibleSize.width - backgroundWidth + this->getBoundingBox().size.width / 2 + 10) &&
-			newPos.x <= (visibleSize.width - this->getBoundingBox().size.width / 2 - 10))
+			newPos.x <= (visibleSize.width - this->getBoundingBox().size.width / 2 - 10)) {
 			this->setPosition(newPos);
-	}
+		}
+		
+		heroSmallCircle->setPosition(this->getPosition());
+		heroBigCircle->setPosition(this->getPosition());
 
+
+	}
+	
+
+	//log("posicion del hero: %i X %i Y   / posicion del circulo: %i X %i Y"),this->getPosition().x, this->getPosition().y,heroCircle->getPosition().x, heroCircle->getPosition().y;
 
 }

@@ -12,7 +12,16 @@ public:
 
 	bool _isMoving;
 	bool _combatMode;
-	
+	bool _hits;
+	bool _isHitted;
+
+	float heroSmallRadius;
+	float heroBigRadius;
+
+	DrawNode *heroSmallCircle;
+	DrawNode *heroBigCircle;
+
+
 
 	Hero();
 	~Hero();
