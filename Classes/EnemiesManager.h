@@ -2,18 +2,22 @@
 #define __ENEMIES_MANAGER_H__
 
 #include "cocos2d.h"
+#include "Enemy.h"
 
-class EnemiesManager
+class EnemiesManager : public cocos2d::Ref
 {
 public:
 	EnemiesManager();
 	~EnemiesManager();
 
-	void creaEnemigos(int nivel);
+	static EnemiesManager* create();
 
-	void actualizaEnemigos();
+	Vector<Enemy*> enemies;
+	void createEnemies(int nivel);
 
-	void destruyeEnemigos();
+	void updateEnemies();
+
+	void destroyEnemies();
 
 };
 

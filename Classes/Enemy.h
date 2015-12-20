@@ -17,6 +17,7 @@ public:
 	void initOptions();
 	void updateEnemy();
 	void selectionActionMood(float dt);
+	void placeEnemy(int x, int y);
 
 	DrawNode *circle;
 	int posIni;

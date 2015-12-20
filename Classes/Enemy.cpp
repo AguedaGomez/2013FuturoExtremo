@@ -22,6 +22,9 @@ Enemy* Enemy::create()
 	CC_SAFE_DELETE(pSprite);
 	return NULL;
 }
+/*INITOPTIONS
+Inicializa los atributos que necesita el enemigo
+*/
 void Enemy::initOptions()
 {
 	circle = DrawNode::create();
@@ -61,6 +64,11 @@ void Enemy::selectionActionMood(float dt)
 	}
 
 
+}
+
+void Enemy::placeEnemy(int x, int y)
+{
+	this->setPosition(Vec2(x, y));
 }
 
 /*

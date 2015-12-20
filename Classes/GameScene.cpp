@@ -1,7 +1,7 @@
 #include "GameScene.h"
 #include "PauseScene.h"
 #include "GameOverScene.h"
-#include "Enemy.h"
+#include "EnemiesManager.h"
 
 
 USING_NS_CC;
@@ -40,13 +40,21 @@ bool GameScene::init()
 	
 	setBackground();
 	futureBuilding();
+	nivel = 0;
 
-	enemy = Enemy::create();
-	enemy->retain();
-	enemy->posIni = 400;
-	enemy->setPositionX(enemy->posIni);
-	addChild(enemy, 1);
-	addChild(enemy->circle, 1);
+	/*Se crea un objeto que maneja todos los enemigos
+	con un bucle se recorre el vector que contiene todos los enemigos
+	para que aparezcan en escena
+	*/
+	enemiesManager = EnemiesManager::create();
+	enemiesManager->createEnemies(nivel);
+	enemiesManager->retain();
+	for (int i = 0; i < enemiesManager->enemies.size(); i++) {
+		addChild(enemiesManager->enemies.at(i), 1);
+		addChild(enemiesManager->enemies.at(i)->circle, 1);
+	}
+	
+	
 
 	futureBuilding();
 	hero = Hero::create();
@@ -177,6 +185,6 @@ void GameScene::update(float dt) {
 
 	hero->updateHero(visibleSize, background->getContentSize().width);
 
-	enemy->updateEnemy();
+	enemiesManager->updateEnemies();
 	
 }

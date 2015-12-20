@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Hero.h"
-#include "Enemy.h"
+#include "EnemiesManager.h"
 
 
 USING_NS_CC;
@@ -23,7 +23,8 @@ private:
 public:
 	static cocos2d::Scene* createScene();
 	Sprite *_playerSprite;
-	Enemy *enemy;
+	EnemiesManager *enemiesManager;
+	int nivel;
 
 	virtual bool init();
 
