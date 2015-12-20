@@ -67,8 +67,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = MainMenu::createScene();
 
 	//spritesheet
-	//auto spritecache = SpriteFrameCache::getInstance();
-	//spritecache->addSpriteFramesWithFile("nombresspriteshee.plist");
+	auto spritecache = SpriteFrameCache::getInstance();
+	spritecache->addSpriteFramesWithFile("objetosInteractivos.plist");
 
     // run
     director->runWithScene(scene);
