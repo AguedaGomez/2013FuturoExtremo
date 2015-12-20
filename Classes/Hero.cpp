@@ -53,9 +53,11 @@ void Hero::placeHero(Size vS) {
 	heroSmallCircle = DrawNode::create();
 	heroSmallCircle->drawCircle(this->getPosition(), heroSmallRadius, 1.0, 20, false, Color4F(1, 0, 0, 1));
 	heroBigCircle = DrawNode::create();
-	heroBigCircle->drawCircle(this->getPosition(), heroBigRadius , 1.0, 20, false, Color4F(0, 1, 0, 1));
+	heroBigCircle->drawCircle(this->getPosition(), heroBigRadius, 1.0, 20, false, Color4F(0, 1, 0, 1));
 	this->setPosition(Point(visibleSize.width / 2, ((visibleSize.height / 2) - this->getContentSize().height / 2 + 21))); //El +5 es para cuadrarlo justo sobre el suelo
-	
+	heroSmallCircle->setPosition(this->getPosition());
+	heroBigCircle->setPosition(this->getPosition());
+
 	//heroCircle->retain();
 	log("TEST: radio del circuloPequeñoHeroe %f", this->getContentSize().width / 3.5);
 }

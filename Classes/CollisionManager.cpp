@@ -59,11 +59,14 @@ void CollisionManager::enemiesHitHero()
 		eX = enemies.at(i)->getPositionX();
 		eY = enemies.at(i)->getPositionY();
 		
-		if (ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemyBigRadius + hero->heroSmallRadius)) {
+		if ((ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemyBigRadius + hero->heroSmallRadius))&&(enemies.at(i)->_atacking)) {
 			log("ENEMIGO PEGA A NICK");
 		}
-		/*if (hero->heroSmallCircle->getBoundingBox().intersectsCircle(enemies.at(i)->getPosition(), enemies.at(i)->enemyBigRadius)) {
+		if (hero->heroSmallCircle->getBoundingBox().intersectsCircle(enemies.at(i)->getPosition(), enemies.at(i)->enemyBigRadius)) {
 			log("ENEMIGO PEGA A NICK 2da forma");
+		}
+		/*if (hero->heroSmallCircle->getBoundingBox().intersectsRect(enemies.at(i)->getBoundingBox())); {
+			log("ENEMIGO PEGA A NICK 3a forma"); 
 		}*/
 	}
 }

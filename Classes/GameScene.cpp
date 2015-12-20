@@ -55,12 +55,13 @@ bool GameScene::init()
 		addChild(enemiesManager->enemies.at(i)->enemySmallCircle, 1);
 	}
 	
+	
+
 
 	futureBuilding();
 	hero = Hero::create();
 	hero->initOptions();
 	hero->placeHero(Director::getInstance()->getVisibleSize());
-	//hero->retain();
 	addChild(hero, 1);
 	addChild(hero->heroSmallCircle, 1);
 	addChild(hero->heroBigCircle, 1);
