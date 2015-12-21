@@ -59,7 +59,7 @@ bool GameScene::init()
 
 	collisionManager = CollisionManager::create();
 	collisionManager->retain();
-	collisionManager->initCollisions(hero, enemiesManager->enemies);
+	collisionManager->initCollisions(hero, enemiesManager->enemies,objectManager->objects);
 
 	hud();
 

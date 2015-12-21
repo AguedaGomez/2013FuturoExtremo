@@ -20,6 +20,7 @@ public:
 	bool blue;
 	bool _isHitting;
 	bool _isHitted;
+	bool _interacts;
 
 	float heroSmallRadius;
 	float heroBigRadius;
