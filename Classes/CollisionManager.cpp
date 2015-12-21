@@ -18,11 +18,12 @@ CollisionManager * CollisionManager::create()
 	return nullptr;
 }
 
-void CollisionManager::initCollisions(Hero * hero, Vector<Enemy*> enemies /*Vector<DrawNode*> objects*/)
+void CollisionManager::initCollisions(Hero * hero, Vector<Enemy*> enemies ,Vector<ObjectWithRadius*> objects)
 {
 	this->hero = hero;
 	this->enemies = enemies;
-	//this->objectsCircles = objects;
+	this->objects = objects;
+	
 }
 
 void CollisionManager::updateCollisions()
@@ -92,6 +93,22 @@ void CollisionManager::heroHitsEnemies()
 
 void CollisionManager::heroTouchObject()
 {
+	if (hero->_interacts) {
+		float hX = hero->getPositionX();
+		float hY = hero->getPositionY();
+		float oX;
+		float oY;
+
+		for (int i = 0; i < objects.size(); i++) {
+			//log("Comprobando objeto%d / su radio = %f",i, objects.at(i)->objectRadius);
+			oX = objects.at(i)->getPositionX();
+			oY = objects.at(i)->getPositionY();
+			if (ccpDistance(Vec2(hX, hY), Vec2(oX, oY)) < (objects.at(i)->objectRadius + hero->heroSmallRadius)) {
+				log("NICK interactua con el objeto%d", i);
+			}
+		}
+	}
+	hero->_interacts = false;
 }
 
 void CollisionManager::heroHitsObject()

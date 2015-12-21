@@ -11,7 +11,7 @@ public:
 
 	static CollisionManager* create();
 
-	void initCollisions(Hero *hero, Vector<Enemy*> enemies /*Vector<DrawNode*> objects*/);
+	void initCollisions(Hero *hero, Vector<Enemy*> enemies,Vector<ObjectWithRadius*>objects);
 
 	void updateCollisions();
 
@@ -23,7 +23,8 @@ public:
 private:
 	Hero *hero;
 	Vector<Enemy*> enemies;
-	Vector<DrawNode*> objectsCircles;
+	Vector<ObjectWithRadius*> objects;
+
 
 };
 

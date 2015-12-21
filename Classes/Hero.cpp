@@ -37,6 +37,9 @@ void Hero::initOptions()
 	levelRed = 4;
 	levelBlue = 4;
 	levelGreen = 4;
+	_interacts = false;
+	_isHitted = false;
+	_isHitting = false;
 }
 
 void Hero::addEvents()
@@ -124,6 +127,9 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 
 			}
 			this->_isHitting = true;
+		}
+		else { //combatmode = false -> esta en modo interactuar
+			this->_interacts = true;
 		}
 		break;
 	}
