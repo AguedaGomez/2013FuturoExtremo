@@ -165,6 +165,9 @@ void Hero::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
 	switch (_pressedKey) {
 	case EventKeyboard::KeyCode::KEY_SPACE:
 		this->_isHitting = false;
+		if (this->_combatMode) {
+			this->setTexture("NickColtrane_combat_apagado.png");
+		}
 		break;
 	}
 	if (_pressedKey == keyCode) {
