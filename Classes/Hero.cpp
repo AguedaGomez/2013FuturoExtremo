@@ -34,6 +34,7 @@ void Hero::initOptions()
 	_combatMode = false;
 	green = false;
 	blue = false;
+	red = false;
 	levelRed = 4;
 	levelBlue = 4;
 	levelGreen = 4;
@@ -90,7 +91,7 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 		_combatMode = true;
 		log("Coltrane esta en modo combate");
-		this->setTexture("NickColtrane_combat.png");
+		this->setTexture("NickColtrane_combat_apagado.png");
 		break;
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 		_combatMode = false;
@@ -98,31 +99,49 @@ void Hero::onKeyPressed(EventKeyboard::KeyCode keyCode, Event *event) {
 		this->setTexture("NickColtrane_estatic.png");
 		break;
 	case EventKeyboard::KeyCode::KEY_Q:
-		red = true;
+		if (this->_combatMode){
+			red = true;
+			blue = false;
+			green = false;
+			this->setTexture("NickColtrane_combat_rojo.png");
+		}	
 		break;
 	case EventKeyboard::KeyCode::KEY_W:
-		blue = true;
+		if (this->_combatMode){
+			blue = true;
+			red = false;
+			green = false;
+			this->setTexture("NickColtrane_combat_azul.png");
+		}
 		break;
 	case EventKeyboard::KeyCode::KEY_E:
-		green = true;
+		if (this->_combatMode){
+			green = true;
+			blue = false;
+			red = false;
+			this->setTexture("NickColtrane_combat.png");
+		}
 		break;
 	case EventKeyboard::KeyCode::KEY_SPACE:
 		if (this->_combatMode) {
 			if (red) {
+				this->setTexture("NickColtrane_ataque_rojo.png");
 				red = false;
 				levelRed--;
-
 			}
 			else if (blue) {
+				this->setTexture("NickColtrane_ataque_azul.png");
 				blue = false;
 				levelBlue--;
-
 			}
 			else if (green) {
+				this->setTexture("NickColtrane_ataque.png");
 				green = false;
 				levelGreen--;
-
 			}
+			else if (red != true && blue != true && green != true)
+				this->setTexture("NickColtrane_ataque_apagado.png");
+
 			this->_isHitting = true;
 		}
 		break;
