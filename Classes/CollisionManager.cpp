@@ -29,7 +29,7 @@ void CollisionManager::updateCollisions()
 {
 	bool enemyAtacking = false;
 
-	if (hero->_combatMode && hero->_hits) {
+	if (hero->_combatMode && hero->_isHitting) {
 		heroHitsEnemies();
 		heroHitsObject();
 	}
@@ -62,7 +62,7 @@ void CollisionManager::enemiesHitHero()
 		if ((ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemyBigRadius + hero->heroSmallRadius))&&(enemies.at(i)->_atacking)) {
 			log("ENEMIGO PEGA A NICK");
 		}
-		if (hero->heroSmallCircle->getBoundingBox().intersectsCircle(enemies.at(i)->getPosition(), enemies.at(i)->enemyBigRadius)) {
+		/*if (hero->heroSmallCircle->getBoundingBox().intersectsCircle(enemies.at(i)->getPosition(), enemies.at(i)->enemyBigRadius)) {
 			log("ENEMIGO PEGA A NICK 2da forma");
 		}
 		/*if (hero->heroSmallCircle->getBoundingBox().intersectsRect(enemies.at(i)->getBoundingBox())); {
@@ -73,6 +73,21 @@ void CollisionManager::enemiesHitHero()
 
 void CollisionManager::heroHitsEnemies()
 {
+	if (hero->_isHitting) {
+		float hX = hero->getPositionX();
+		float hY = hero->getPositionY();
+		float eX;
+		float eY;
+		log("Nick lanza un golpe");
+		for (int i = 0; i < enemies.size(); i++) {
+			eX = enemies.at(i)->getPositionX();
+			eY = enemies.at(i)->getPositionY();
+			if (ccpDistance(Vec2(hX, hY), Vec2(eX, eY)) < (enemies.at(i)->enemySmallRadius + hero->heroBigRadius)) {
+				log("NICK golpea a enemigo%d", enemies.at(i));
+			}
+		}
+	}
+	hero->_isHitting = false;
 }
 
 void CollisionManager::heroTouchObject()

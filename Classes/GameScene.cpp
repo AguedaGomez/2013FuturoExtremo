@@ -2,8 +2,10 @@
 #include "PauseScene.h"
 #include "GameOverScene.h"
 #include "EnemiesManager.h"
+#include "ui/CocosGUI.h"
 #include "ObjectManager.h"
 
+using namespace cocos2d::ui;
 
 USING_NS_CC;
 
@@ -42,6 +44,7 @@ bool GameScene::init()
 	setBackground();
 	futureBuilding();
 	nivel = 0;
+	
 
 	initEnemiesManager();
 	initObjectManager();
@@ -53,12 +56,13 @@ bool GameScene::init()
 	addChild(hero, 1);
 	addChild(hero->heroSmallCircle, 1);
 	addChild(hero->heroBigCircle, 1);
-	
+
 	collisionManager = CollisionManager::create();
 	collisionManager->retain();
 	collisionManager->initCollisions(hero, enemiesManager->enemies);
-	
-	
+
+	hud();
+
 	//inciar la variable de de las teclas
 	_pressedKey = EventKeyboard::KeyCode::KEY_NONE;
 	
@@ -200,6 +204,83 @@ void GameScene::goToGameOverScene(Ref *pSebder)
 }
 
 /*
+	HUD
+	carga los indicadores de energía
+*/
+void GameScene::hud()
+{
+	loadingBarRed = LoadingBar::create("LoadingBarRed.png");
+	loadingBarRed->setPosition(Vec2(hero->getPositionX()-400, -50));
+	loadingBarRed->setPercent(100);
+	addChild(loadingBarRed, 2);
+
+	loadingBarBlue = LoadingBar::create("LoadingBarBlue.png");
+	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, -100));
+	loadingBarBlue->setPercent(100);
+	addChild(loadingBarBlue, 2);
+
+	loadingBarGreen = LoadingBar::create("LoadingBarGreen.png");
+	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -150));
+	loadingBarGreen->setPercent(100);
+	addChild(loadingBarGreen, 2);
+	
+	
+}
+
+/*
+	CHECKENERGY
+	comprueba los niveles de energía que tiene Coltrane
+	y va actualizando las barras
+
+*/
+void GameScene::checkEnergy()
+{
+	switch (hero->levelRed) {
+	case 3:
+		loadingBarRed->setPercent(75);
+		break;
+	case 2:
+		loadingBarRed->setPercent(50);
+		break;
+	case 1:
+		loadingBarRed->setPercent(25);
+		break;
+	case 0:
+		loadingBarRed->setPercent(0);
+		break;
+	}
+	switch (hero->levelGreen) {
+	case 3:
+		loadingBarGreen->setPercent(75);
+		break;
+	case 2:
+		loadingBarGreen->setPercent(50);
+		break;
+	case 1:
+		loadingBarGreen->setPercent(25);
+		break;
+	case 0:
+		loadingBarGreen->setPercent(0);
+		break;
+	}
+	switch (hero->levelBlue) {
+	case 3:
+		loadingBarBlue->setPercent(75);
+		break;
+	case 2:
+		loadingBarBlue->setPercent(50);
+		break;
+	case 1:
+		loadingBarBlue->setPercent(25);
+		break;
+	case 0:
+		loadingBarBlue->setPercent(0);
+		break;
+	}
+
+}
+
+/*
 	UPDATE ahora mismo se llama cada frame
 		-Mueve el personaje si hemos pulsado la tecla
 */
@@ -208,8 +289,14 @@ void GameScene::update(float dt) {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	hero->updateHero(visibleSize, background->getContentSize().width);
+	
+	loadingBarRed->setPosition(Vec2(hero->getPositionX() - 400, -50)); //cada frame hay que actualizar la posición de todas las barras para que siempre estén en pantalla
+	loadingBarBlue->setPosition(Vec2(hero->getPositionX() - 400, -100));
+	loadingBarGreen->setPosition(Vec2(hero->getPositionX() - 400, -150));
 
 	enemiesManager->updateEnemies();
+	checkEnergy();
 	collisionManager->updateCollisions();
+
 	
 }
